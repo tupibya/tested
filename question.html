@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>URLパラメータの選別テスト</title>
+</head>
+<body>
+
+  <!-- 結果を表示する場所 -->
+  <h1 id="message">読み込み中...</h1>
+
+  <script>
+    // 1. 現在のURLから「?」以降のパラメータを取得する
+    const params = new URLSearchParams(window.location.search);
+
+    // 2. 「type」という名前の値を取得する（例: ?type=a なら "a" が入る）
+    const type = params.get('type');
+
+    // 3. 取得した値によって表示を選別する
+    const messageElement = document.getElementById('message');
+
+    if (type === 'a') {
+      messageElement.textContent = 'パターンAの画面を表示しています。';
+    } else if (type === 'b') {
+      messageElement.textContent = 'パターンBの画面を表示しています。';
+    } else {
+      messageElement.textContent = '通常の画面（パラメータなし）です。';
+    }
+  </script>
+
+</body>
+</html>
